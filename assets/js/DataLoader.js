@@ -1,15 +1,28 @@
 'use strict';
 
 class DataLoader extends EventTarget {
+  #_src;
+  #_options;
 
   /**
    *
-   * @param {string} url
    * @param {object} [options]
    * @param {'json'|'text'|'formData'|'blob'|'arrayBuffer'} [options.parseMethod]
    */
-  loadData (url, { parseMethod, ...rest } = { parseMethod: 'json' }) {
-    fetch(url, rest)
+  constructor (options = { parseMethod: 'json' }) {
+    super();
+    this.#_src = null;
+    this.#_options = options;
+  }
+
+  set src (v) {
+    this.#_src = v;
+    this.#loadData();
+  }
+
+  #loadData () {
+    const { parseMethod, ...rest } = this.#_options;
+    fetch(this.#_src, rest)
       .then(res => res[parseMethod]())
       .then(data => {
         this.dispatchEvent(new CustomEvent('load', {

@@ -10,5 +10,4 @@ dataLoader.addEventListener('load', ({ detail: data }) => {
 dataLoader.addEventListener('error',
   ({ detail: error }) => { console.error(error); });
 
-dataLoader.loadData('./persons.json'); // correct url
-dataLoader.loadData('./wrong-path.json'); // incorrect url
+dataLoader.src = './persons.json';
