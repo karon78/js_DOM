@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-import DataLoader from './DataLoader.js';
+import DataLoader from "./DataLoader.js";
 
 const dataLoader = new DataLoader();
 
-dataLoader.addEventListener('load', ({ detail: data }) => {
-  console.table(data);
-});
-dataLoader.addEventListener('error',
-  ({ detail: error }) => { console.error(error); });
+dataLoader.addEventListener("load", onDataLoadHandler);
 
-dataLoader.src = './persons.json';
+dataLoader.src = "./persons.json";
+
+function onDataLoadHandler(e) {
+  const data = e.detail;
+}

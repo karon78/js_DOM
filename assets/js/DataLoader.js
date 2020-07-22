@@ -17,14 +17,14 @@ class DataLoader extends EventTarget {
 
   set src(v) {
     this.#_src = v;
-    this.#loadData();
+    this.loadData();
   }
 
   get src() {
     return this.#_src;
   }
 
-  #loadData() {
+  loadData() {
     const { parseMethod, ...rest } = this.#_options;
     fetch(this.#_src, rest)
       .then((res) => res[parseMethod]())
