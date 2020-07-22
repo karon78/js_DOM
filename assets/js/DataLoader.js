@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class DataLoader extends EventTarget {
   #_src;
@@ -9,30 +9,39 @@ class DataLoader extends EventTarget {
    * @param {object} [options]
    * @param {'json'|'text'|'formData'|'blob'|'arrayBuffer'} [options.parseMethod]
    */
-  constructor (options = { parseMethod: 'json' }) {
+  constructor(options = { parseMethod: "json" }) {
     super();
     this.#_src = null;
     this.#_options = options;
   }
 
-  set src (v) {
+  set src(v) {
     this.#_src = v;
     this.#loadData();
   }
 
-  #loadData () {
+  get src() {
+    return this.#_src;
+  }
+
+  #loadData() {
     const { parseMethod, ...rest } = this.#_options;
     fetch(this.#_src, rest)
-      .then(res => res[parseMethod]())
-      .then(data => {
-        this.dispatchEvent(new CustomEvent('load', {
-          detail: data,
-        }));
-      }).catch(error => {
-      this.dispatchEvent(new CustomEvent('error', {
-        detail: error,
-      }));
-    });
+      .then((res) => res[parseMethod]())
+      .then((data) => {
+        this.dispatchEvent(
+          new CustomEvent("load", {
+            detail: data,
+          })
+        );
+      })
+      .catch((error) => {
+        this.dispatchEvent(
+          new CustomEvent("error", {
+            detail: error,
+          })
+        );
+      });
   }
 }
 
