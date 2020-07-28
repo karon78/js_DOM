@@ -1,1 +1,89 @@
 @import "./fonts/icons.css";
+@import "./reset.css";
+
+:root {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+body{
+    background-color: #031aa1;
+}
+
+.userCards {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.userCardItem {
+
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 320px;
+    background-color: silver;
+}
+
+.imgContainer {
+    width: 320px;
+    height: 320px;
+    background-color: pink;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+
+    color: silver;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.userImage {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: top;
+}
+
+.userName {
+    margin: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    min-height: 2rem;
+}
+
+.userDate {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+
+}
+
+.userContact, .userControl {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    color: navy;
+}
+
+.userControl{
+    color: black;
+}
+.favorite {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.imgIcon:hover {
+    color: palevioletred;
+    cursor: pointer;
+}
