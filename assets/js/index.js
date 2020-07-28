@@ -9,5 +9,12 @@ dataLoader.addEventListener("load", onDataLoadHandler);
 dataLoader.src = "./persons.json";
 
 function onDataLoadHandler(e) {
-  const data = e.detail;
+    const data = e.detail;
+
 }
+
+
+
+
+
+

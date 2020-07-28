@@ -66,12 +66,15 @@ body{
     margin: 20px;
 
 }
+a{
+    text-decoration: none;
 
+}
 .userContact, .userControl {
     margin: 20px;
     display: flex;
     justify-content: space-around;
-    color: navy;
+    font-size: 2rem;
 }
 
 .userControl{
